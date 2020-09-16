@@ -3,17 +3,19 @@ title: "Setting up VScode to test python scripts on WSL2 ubuntu"
 date: 2020-09-16
 categories: python
 ---
-___
-# __1. WSL2 setup WSL2 설치하기__
+
+## __1. WSL2 setup WSL2 설치하기__
 
  - Basic setup - [official docs][MS-WSL2]
-___
-# __2. Ubuntu apt repo url 변경하기__
+ 
+
+
+## __2. Ubuntu apt repo url 변경하기__
 
  - 기본 url에서 kakao mirror로 변경하는 법은 [이 블로그][apt-kakao]를 참고함
 
 
-# __3. WSL Ubuntu 상에 python setup - miniconda 활용__
+## __3. WSL Ubuntu 상에 python setup - miniconda 활용__
 
 - official docs와는 다르게 pip 대신 miniconda로 virtualenv를 만들어 관리하고자 함.
     - [official docs][vscode-wsl2-python]
@@ -69,7 +71,7 @@ conda install -c bioconda pysam pybedtools
 conda install numpy scipy
 ```
 
-# __4. WSL에서 vscode 실행 및 setup__
+## __4. WSL에서 vscode 실행 및 setup__
  - [official docs][vscode-wsl2-python2]
  - wsl2 내에서 vscode 실행 - 아마도 vscode가 windows 쪽에 이미 설치되어있어야 할듯 : [vscode-링크][vscode]
 
@@ -90,7 +92,7 @@ code .
 
 
 
-# __4. 기타 설정__
+## __4. 기타 설정__
   1) ctrl + enter -> execution & move to next line
      
      - 기본 설정은 shift + enter 눌렀을 때 해당 라인이 실행되고, 커서는 그대로 남아있음 -> 실행 단축기를 연타하여 코드를 실행하는 방식이 불가능함

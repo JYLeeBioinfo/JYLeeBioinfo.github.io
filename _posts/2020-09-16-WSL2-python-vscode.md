@@ -1,5 +1,5 @@
 ---
-title: "Setting up VScode to test python scripts on WSL2 ubuntu"
+title: "WSL2 - VScode - python  setup"
 date: 2020-09-16
 categories: python
 ---

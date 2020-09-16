@@ -3,34 +3,37 @@ title: "Setting up VScode to test python scripts on WSL2 ubuntu"
 date: 2020-09-16
 categories: python
 ---
+___
+# __1. WSL2 setup WSL2 설치하기__
 
-1. WSL2 setup WSL2 설치하기
+ - Basic setup - [official docs][MS-WSL2]
+___
+# __2. Ubuntu apt repo url 변경하기__
 
-Basic setup - [official docs][MS-WSL2]
-
-
-2. Ubuntu apt repo url 변경하기
-
-기본 url에서 kakao mirror로 변경하는 법은 [이 블로그][apt-kakao]를 참고함
+ - 기본 url에서 kakao mirror로 변경하는 법은 [이 블로그][apt-kakao]를 참고함
 
 
-3. Ubuntu 설정
+# __3. WSL Ubuntu 상에 python setup - miniconda 활용__
 
-[official docs][vscode-wsl2-python]
-
- - official docs와는 다르게 pip 대신 miniconda로 virtualenv를 만들어 관리하고자 함.
+- official docs와는 다르게 pip 대신 miniconda로 virtualenv를 만들어 관리하고자 함.
+    - [official docs][vscode-wsl2-python]
+- apt update
  ```bash
 #update
 sudo apt update
-
+```
+- miniconda 다운로드
+```bash
 #miniconda3 python3.8
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-
- - miniconda base directory는 용량이 큰 D drive 쪽에 설정함 : /mnt/d/linux_miniconda/miniconda3
+ - miniconda 설치
+    - miniconda base directory는 용량이 큰 D drive 쪽에 설정함 : /mnt/d/linux_miniconda/miniconda3
 
 ```bash
+
+bash Miniconda3-latest-Linux-x86_64.sh
 
 #miniconda3 setting
 # Do you accept the license terms? [yes|no]
@@ -49,18 +52,52 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 
 - conda base env가 자동으로 켜지지 않도록 설정
-
 ```bash
-
 conda config --set auto_activate_base false
 ```
 
-- python virtualenv 만들어 python 및 필요한 툴들 설치
+- python 이라는 이름의 virtualenv 만들기
+```bash
+conda create -n python
+```
+- python virtualenv에 들어가서 python 및 필요한 툴들 설치
+    - virtual environment 활성화 후 conda install을 통해 설치하면 virtual env 위치를 기본 경로로 모든 툴들이 설치됨 (python 포함)
 
 ```bash
+conda activate python
 conda install -c bioconda pysam pybedtools
-
+conda install numpy scipy
 ```
+
+# __4. WSL에서 vscode 실행 및 setup__
+ - [official docs][vscode-wsl2-python2]
+ - wsl2 내에서 vscode 실행 - 아마도 vscode가 windows 쪽에 이미 설치되어있어야 할듯 : [vscode-링크][vscode]
+
+```bash
+code .
+```
+![](images/vscode_on_wslside.png)
+
+
+ - Ctrl + Shift + P 누르고 Select 검색, Python: Select Interpreter 선택 
+![](images/vscode_select_interpreter_01.png)
+
+ - 앞서 conda 명령어로 생성한 python virtualenv에 설치된 python을 연결함
+ ![](images/vscode_select_interpreter_02.png.png)
+
+ - 설정된 python은 현재 project directory에 한정되어 적용되는 것으로 보이는데, 실제로 그러한지는 테스트 해 볼 예정
+![](images/vscode_select_interpreter_02.png)
+
+
+
+# __4. 기타 설정__
+  1) ctrl + enter -> execution & move to next line
+     
+     - 기본 설정은 shift + enter 눌렀을 때 해당 라인이 실행되고, 커서는 그대로 남아있음 -> 실행 단축기를 연타하여 코드를 실행하는 방식이 불가능함
+
+     - [참고링크][ctrl_enter]
+
+   2) code block 설정 - 아무리 찾아봐도 없는듯 ㅠㅠ
 
 
 
@@ -68,16 +105,6 @@ conda install -c bioconda pysam pybedtools
 [MS-WSL2]:  https://docs.microsoft.com/ko-kr/windows/wsl/install-win10#update-to-wsl-2
 [apt-kakao]: https://teddylee777.github.io/linux/ubuntu%EC%97%90%EC%84%9C-apt-get%EC%98%A4%EB%A5%98%EC%8B%9C-mirror%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%EB%B0%A9%EB%B2%95
 [vscode-wsl2-python]: https://code.visualstudio.com/docs/remote/wsl-tutorial#_python-development
-
-
-```python
-def print_hi(name):
-  print("hello", name)
-print_hi('Tom')
-```
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[vscode]: https://code.visualstudio.com/
+[vscode-wsl2-python2]: https://code.visualstudio.com/docs/remote/wsl-tutorial#_run-in-wsl
+[ctrl_enter]: http://actuarialdatascience.com/shortcut_vscode.html

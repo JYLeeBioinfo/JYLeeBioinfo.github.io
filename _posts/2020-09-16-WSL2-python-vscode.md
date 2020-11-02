@@ -94,9 +94,7 @@ code .
 
 ## __4. 기타 설정__
   1) ctrl + enter -> execution & move to next line
-     
      - 기본 설정은 shift + enter 눌렀을 때 해당 라인이 실행되고, 커서는 그대로 남아있음 -> 실행 단축기를 연타하여 코드를 실행하는 방식이 불가능함
-
      - Ctrl + Enter 설정방법 : [참고링크][ctrl_enter]
         - 이 링크에 나온대로 macros를 활용하면 R studio와 유사하게 ctrl+enter로 코드 라인 실행이 가능함
         - R studio에서 r command 실행할 때 처럼, 코드 일부분을 선택하여 실행 및 점검하는 것이 가능함
@@ -104,13 +102,9 @@ code .
    2) code block 설정
       - 아무리 찾아봐도 없는듯 ㅠㅠ
       - code block을 collapse해서 실행하는 방법이 그나마 가장 편한듯함.
-
         - defition 시작부분 왼쪽을 클릭하면 code block이 collapse됨
-        
         ![](images/code_block_collapse1.png)
-
         - collapse된 라인 앞뒤로 선택해서 실행
-        
         ![](images/code_block_collapse2.png)
 
 

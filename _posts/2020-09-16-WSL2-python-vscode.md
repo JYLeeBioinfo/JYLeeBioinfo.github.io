@@ -107,6 +107,8 @@ code .
         - collapse된 라인 앞뒤로 선택해서 실행
         ![](images/code_block_collapse2.png)
 
+   - (2010929 추가) wsl 용량 증가시키키 : https://docs.microsoft.com/en-us/windows/wsl/vhd-size
+
 
 
 [MS-WSL2]:  https://docs.microsoft.com/ko-kr/windows/wsl/install-win10#update-to-wsl-2

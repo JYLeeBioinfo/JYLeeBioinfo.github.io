@@ -20,11 +20,14 @@ categories: python
 - official docs와는 다르게 pip 대신 miniconda로 virtualenv를 만들어 관리하고자 함.
     - [official docs][vscode-wsl2-python]
 - apt update
- ```bash
+
+```bash
 #update
 sudo apt update
 ```
+
 - miniconda 다운로드
+
 ```bash
 #miniconda3 python3.8
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -54,14 +57,17 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 
 - conda base env가 자동으로 켜지지 않도록 설정
+
 ```bash
 conda config --set auto_activate_base false
 ```
 
 - python 이라는 이름의 virtualenv 만들기
+
 ```bash
 conda create -n python
 ```
+
 - python virtualenv에 들어가서 python 및 필요한 툴들 설치
     - virtual environment 활성화 후 conda install을 통해 설치하면 virtual env 위치를 기본 경로로 모든 툴들이 설치됨 (python 포함)
 

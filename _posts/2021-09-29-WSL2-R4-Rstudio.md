@@ -20,8 +20,7 @@ categories: python
  - [official docs][wsl2-rstudio]
  - apt를 통한 R 설치는 R version 4.1 을 설치할 것이므로 위 site에서 추천하는 대로 [official CRAN page][official-CRAN-page]를 참고하여 설치할 것
  ![](images/Newest_R_install.png)
- 
-    - 내 PC에서 셋업한 방식
+ - 내 PC에서 셋업한 방식
 
 ```bash
 # update indices

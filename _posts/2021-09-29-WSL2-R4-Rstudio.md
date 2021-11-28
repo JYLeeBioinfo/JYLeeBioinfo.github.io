@@ -1,5 +1,5 @@
 ---
-title: "WSL2 - VScode - python  setup"
+title: "WSL2 - R4 installation"
 date: 2020-09-16
 categories: python
 ---
@@ -22,6 +22,7 @@ categories: python
  ![](images/Newest_R_install.png)
  
     - 내 PC에서 셋업한 방식
+
 ```bash
 # update indices
 sudo apt update -qq

@@ -1,5 +1,5 @@
 ---
-title: "WSL2 - R4 installation"
+title: "WSL2 - VScode - python setup"
 date: 2020-09-16
 categories: python
 ---
@@ -21,7 +21,7 @@ categories: python
     - [official docs][vscode-wsl2-python]
 - apt update
 
-```{bash}
+```bash
 #update
 sudo apt update
 ```

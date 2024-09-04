@@ -1,6 +1,6 @@
 ---
 title: "using-mamba-to-install-R-and-Rstudio-desktop"
-date: 2023-10-02
+date: 2024-09-04
 categories: linux
 ---
 
@@ -24,13 +24,7 @@ categories: linux
    - ```
      mamba activate R
      ```
- - load module for conda/mamba-installed R
+ - Launch rstudio
    - ```
-     module load cosmx/1 # load module
-     ```
-     
- - Launch Rstudio
-   - ```
-     cd rstudio-2023.09.0+463
-     ./rstudio
+     rstudio
      ```

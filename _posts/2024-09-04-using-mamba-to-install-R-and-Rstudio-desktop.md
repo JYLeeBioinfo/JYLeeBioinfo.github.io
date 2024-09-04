@@ -6,7 +6,7 @@ categories: linux
 
 ## 1. Download and install miniforge
 
- - Download miniforge : https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-mac-os--linux
+ - Download miniforge : [https://github.com/conda-forge/miniforge?tab=readme-ov-file#unix-like-platforms-mac-os--linux]
    -  Run the following commmand tho install miniforge
      -  ```
         curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"

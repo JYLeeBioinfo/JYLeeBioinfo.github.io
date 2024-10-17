@@ -7,6 +7,7 @@ date: "2024-10-17"
 
 
 ```{bash}
+git clone https://github.com/JYLeeBioinfo/oldrepo.git
 rm -rf .git # remove git history and information
 git init # initialize
 git add . # add all files to the tree

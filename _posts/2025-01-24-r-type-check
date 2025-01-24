@@ -1,0 +1,16 @@
+---
+title: "R Devel 2 : Data Type Check Collection"
+output:
+  html_document: default
+date: "2025-01-17"
+---
+
+# 1. Numeric data types
+
+```{r}
+is <- methods::is
+is(1,"numeric") # TRUE
+is(1,"integer") # FALSE
+is(integer(1),"numeric") # TRUE
+is(integer(1),"integer") # TRUE
+```

@@ -1,0 +1,90 @@
+---
+title: "R Devel 3 : Reducing object size for memory efficiency"
+output:
+  html_document: default
+date: "2025-01-17"
+---
+
+# 1. differences of object sizes by type
+ - Store values as integers or logicals rather than numerics, where possible.
+ - Store values as factors rather than characters. Especially if a small set of characters is repeatedly used.
+
+```{r}
+library(dplyr)
+```
+
+ - integer vs logical vs numeric
+```{r}
+x = rep(1L,1000)
+class(x)
+object.size(x)
+```
+'integer'
+4048 bytes
+
+
+```{r}
+x = rep(TRUE,1000)
+class(x)
+object.size(x)
+```
+'logical'
+4048 bytes
+
+```{r}
+x = rep(1.0,1000)
+class(x)
+object.size(x)
+```
+'numeric'
+8048 bytes
+
+- character vs factor
+
+```{r}
+set.seed(25236325);x = sample(c("a","b","c"),size = 1000,replace = TRUE) 
+class(x)
+object.size(x)
+class(x %>% as.factor)
+object.size(x %>% as.factor)
+```
+'character'
+8216 bytes
+'factor'
+4632 bytes
+
+
+# 2. Vector rather than list
+ - Avoid using lengthy lists of short vectors
+ - Try to make them short lists of long vectors, or if possible data.frames.
+
+
+```{r}
+vec <- 1L
+rep_n <- 1000/length(vec)
+x <- rep(list(vec),rep_n)
+print(paste0(length(rep_n),"-element ",class(vec)," vectors list of length ",rep_n))
+object.size(x)
+```
+[1] "1-element integer vectors list of length 1000"
+64048 bytes
+
+```{r}
+vec <- 1L:2L
+rep_n <- 1000/length(vec)
+x <- rep(list(vec),rep_n)
+print(paste0(length(rep_n),"-element ",class(vec)," vectors list of length ",rep_n))
+object.size(x)
+```
+[1] "1-element integer vectors list of length 500"
+32048 bytes
+
+```{r}
+vec <- 1L:10L
+rep_n <- 1000/length(vec)
+x <- rep(list(vec),rep_n)
+print(paste0(length(rep_n),"-element ",class(vec)," vectors list of length ",rep_n))
+object.size(x)
+```
+[1] "1-element integer vectors list of length 100"
+10448 bytes

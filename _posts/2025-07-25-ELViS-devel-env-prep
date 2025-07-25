@@ -1,1 +1,24 @@
+---
+title: "Preparing environment for ELViS Devel branch debugging"
+output:
+  html_document: default
+date: "2025-07-25"
+---
 
+# 1. Preparation of environments [ R 4.5.1 (r-base from conda-forge) ]
+ 
+```{bash}
+mamba create -n Rbuild r-base zlib xz libxml2 pandoc
+
+mamba activate Rbuild
+
+R
+```
+
+```{r}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+install.packages(c("png","reticulate","ggplot2","data.table","dplyr","igraph", "memoise", "patchwork", "segclust2d", "stringr", "uuid", "zoo"))
+BiocManager::install(c("rtracklayer","ComplexHeatmap","basilisk","GenomicFeatures", "GenomicRanges",  "txdbmaker"))
+```

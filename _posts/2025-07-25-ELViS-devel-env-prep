@@ -6,18 +6,20 @@ date: "2025-07-25"
 ---
 
 # 1. Preparation of environments [ R 4.5.1 (r-base from conda-forge) ]
- 
+
+
+ - Create environment
 ```{bash}
-mamba create -n Rbuild r-base zlib xz libxml2 pandoc pkg-config
+#                        R       dependencies for R packages      key dependency for devtools R package
+mamba create -n Rbuild r-base zlib xz libxml2 pandoc              pkg-config
 mamba activate Rbuild
 
-Package 'harfbuzz', required by 'virtual:world', not found
-Package 'freetype2', required by 'virtual:world', not found
-Package 'fribidi', required by 'virtual:world', not found
-
+# for devtools installation
 cd {conda-base}/include
 ln -s freetype2/* .
 cd -
+
+# run R executable
 R
 ```
 

@@ -8,10 +8,16 @@ date: "2025-07-25"
 # 1. Preparation of environments [ R 4.5.1 (r-base from conda-forge) ]
  
 ```{bash}
-mamba create -n Rbuild r-base zlib xz libxml2 pandoc
-
+mamba create -n Rbuild r-base zlib xz libxml2 pandoc pkg-config
 mamba activate Rbuild
 
+Package 'harfbuzz', required by 'virtual:world', not found
+Package 'freetype2', required by 'virtual:world', not found
+Package 'fribidi', required by 'virtual:world', not found
+
+cd {conda-base}/include
+ln -s freetype2/* .
+cd -
 R
 ```
 
@@ -19,6 +25,6 @@ R
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-install.packages(c("png","reticulate","ggplot2","data.table","dplyr","igraph", "memoise", "patchwork", "segclust2d", "stringr", "uuid", "zoo"))
+install.packages(c("devtools","png","reticulate","ggplot2","data.table","dplyr","igraph", "memoise", "patchwork", "segclust2d", "stringr", "uuid", "zoo"))
 BiocManager::install(c("rtracklayer","ComplexHeatmap","basilisk","GenomicFeatures", "GenomicRanges",  "txdbmaker"))
 ```

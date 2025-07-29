@@ -27,6 +27,8 @@ R
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
+BiocManager::install(version='devel')
+
 install.packages(c("devtools","png","reticulate","ggplot2","data.table","dplyr","igraph", "memoise", "patchwork", "segclust2d", "stringr", "uuid", "zoo"))
 BiocManager::install(c("rtracklayer","ComplexHeatmap","basilisk","GenomicFeatures", "GenomicRanges",  "txdbmaker"))
 ```
